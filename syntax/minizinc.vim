@@ -9,7 +9,8 @@ let b:current_syntax = "minizinc"
 " Zinc is case sensitive.
 syntax case match
 
-syntax region  zincComment     start=+%+ end=+$+ contains=zincToDo
+syntax region  zincComment     start=+%+ end=+$+ contains=zincToDo,@Spell
+syntax region  cComment        start="/\*" end="\*/" contains=zincToDo,@Spell
 
 syntax keyword zincType        ann any array bool enum float int list of record
 syntax keyword zincType        set string tuple par var
@@ -37,8 +38,6 @@ syntax match   zincOp          +\.\.\.+
 syntax keyword zincToDo        XXX TODO NOTE
 syntax region  zincString      start=+"+ skip=+\\.+ end=+"+ contains=zincStringFmt
 syntax match   zincStringFmt   +\\[abfnrtv]\|\\x[0-9a-fA-F]*\\\|%[-+# *.0-9]*[dioxXucsfeEgGp]+ contained
-
-syntax region  cComment        start="/\*" end="\*/" contains=zincToDo
 
 syntax sync fromstart
 
